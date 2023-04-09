@@ -23,7 +23,7 @@ labels=(
 # location of dialog and installomator scripts
 dialogApp="/usr/local/bin/dialog"
 dialog_command_file="/var/tmp/dialog.log"
-installomator="/path/to/Installomator.sh"
+installomator="/usr/local/Installomator/Installomator.sh"
 
 
 # check we are running as root
