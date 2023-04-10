@@ -1,16 +1,9 @@
 #!/bin/bash
 
-# bash script that will take a list of installomator labels and run through each
-# displays's a dialog with the list of applications and their progress
-#
-# Requires Dialog v1.9.1 or later https://github.com/bartreardon/Dialog/releases
-#
-# ©2022 Bart Reardon
-
 # List of Installomator labels to process
 labels=(
-    "googlechrome"
-    "audacity"
+    "nodejs"
+    "docker"
     "firefox"
     "inkscape"
 )
@@ -58,20 +51,19 @@ function dialog_command(){
 }
 
 function finalise(){
-	dialog_command "progresstext: Install of Applications complete"
+	dialog_command "progresstext: Installation complete"
 	dialog_command "progress: complete"
 	dialog_command "button1text: Done"
 	dialog_command "button1: enable" 
 	exit 0
 }
 
-# work out the number of increment steps based on the number of items
+# work  out the number of increment steps based on the number of items
 # and the average # of steps per item (rounded up to the nearest 10)
 
 output_steps_per_app=30
 number_of_apps=${#labels[@]}
 progress_total=$(( $output_steps_per_app \* $number_of_apps ))
-
 
 # initial dialog starting arguments
 title="Installing Applications"
