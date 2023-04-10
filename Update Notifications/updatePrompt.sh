@@ -1,12 +1,12 @@
-#!/bin/zsh
+#!/bin/bash
 
 #  nudge like script using dialog to prompt for an OS upgrade
 # 
 #  Created by Bart Reardon on 15/9/21.
 #
 
-requiredOSVer="12.2.1"
-ithelplink="https://link.to/servicecentre.html"
+requiredOSVer="Ventura 13.3.1"
+ithelplink="https://itanswers.tesla.com"
 infolink="https://support.apple.com/en-au/HT201222"
 persistant=0 # set this to 1 and the popup will persist until the update is performed
 
@@ -14,9 +14,9 @@ OSVer=$(sw_vers | grep "ProductVersion" | awk '{print $NF}')
 dialog="/usr/local/bin/dialog"
 
 
-title="Important Security Update Required"
-titlefont="colour=red"
-message="### ⚠️You are running macOS version ${OSVer} 
+title="Important Software Update Available"
+titlefont="colour=yellow"
+message="### You are currently running macOS version ${OSVer} 
 
 It is important that you update to **macOS ${requiredOSVer}** at your earliest convenience
 
@@ -25,12 +25,12 @@ macOS ${requiredOSVer} contains important security updates
 **Your swift attention to applying this update is appreciated**"
 infotext="More Information"
 
-icon="/System/Library/PreferencePanes/SoftwareUpdate.prefPane"
+icon=SF=applelogo,colour=orange,colour2=blue
 
 overlay="caution"
 button1text="Open Software Update"
-buttona1ction="open -b com.apple.systempreferences /System/Library/PreferencePanes/SoftwareUpdate.prefPane"
-button2text="Contact the Service Centre"
+button1action="open -b com.apple.systempreferences /System/Library/PreferencePanes/SoftwareUpdate.prefPane"
+button2text="Contact IT Answers"
 button2action=$ithelplink
 
 # check the current version against the required version and exit if we're already at or exceded
@@ -48,6 +48,7 @@ runDialog () {
             --overlayicon "${overlay}" \
             --icon "${icon}" \
             --message "${message}" \
+            --blurscreen \
             --infobuttontext "${infotext}" \
             --infobuttonaction "${infolink}" \
             --button1text "${button1text}" \

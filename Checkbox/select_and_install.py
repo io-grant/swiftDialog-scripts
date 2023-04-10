@@ -82,7 +82,6 @@ os.system("{} --title 'Software Installation' \
 				--message 'Software Install is about to start' \
 				--button1text 'Please Wait' \
 				--icon SF=desktopcomputer.and.arrow.down,colour1=#3596f2,colour2=#11589b \
-				--blurscreen \
 				--progress {} \
 				-s --height 420 \
 				&".format(dialogApp, progress_steps))
