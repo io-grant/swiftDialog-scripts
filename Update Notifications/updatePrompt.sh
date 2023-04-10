@@ -1,14 +1,10 @@
 #!/bin/bash
 
-#  nudge like script using dialog to prompt for an OS upgrade
-# 
-#  Created by Bart Reardon on 15/9/21.
-#
-
 requiredOSVer="Ventura 13.3.1"
 ithelplink="https://itanswers.tesla.com"
 infolink="https://support.apple.com/en-au/HT201222"
-persistant=0 # set this to 1 and the popup will persist until the update is performed
+# set this to 1 and the popup will persist until the update is performed
+persistant=0
 
 OSVer=$(sw_vers | grep "ProductVersion" | awk '{print $NF}')
 dialog="/usr/local/bin/dialog"
@@ -20,9 +16,9 @@ message="### You are currently running macOS version ${OSVer}
 
 It is important that you update to **macOS ${requiredOSVer}** at your earliest convenience
 
-macOS ${requiredOSVer} contains important security updates
+macOS ${requiredOSVer} contains important security updates and bug fixes that have had large impact
 
-**Your swift attention to applying this update is appreciated**"
+****"
 infotext="More Information"
 
 icon=SF=applelogo,colour=orange,colour2=blue
