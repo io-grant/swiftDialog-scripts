@@ -10,7 +10,7 @@ OSVer=$(sw_vers | grep "ProductVersion" | awk '{print $NF}')
 dialog="/usr/local/bin/dialog"
 
 
-title="Important Software Update Available"
+title="IT Answers Message"
 titlefont="colour=yellow"
 message="### You are currently running macOS version ${OSVer} 
 
