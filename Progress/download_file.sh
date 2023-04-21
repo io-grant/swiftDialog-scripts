@@ -12,7 +12,8 @@ downloadFile() {
     TMPDir="/var/tmp/"
 
     # swiftDialog Options
-    dialogcmd="/Library/Application Support/Dialog/Dialog.app"
+    # dialogcmd="/Library/Application Support/Dialog/Dialog.app"
+    dialogcmd="/usr/local/bin/dialog"
     commandFile="/var/tmp/dialog.log"
     ICON="SF=arrow.down.app.fill,colour1=teal,colour2=blue"
 
@@ -39,7 +40,8 @@ downloadFile() {
 }
 
 # example usage
-downloadedfile=$(downloadFile "Microsoft OneDrive" "https://go.microsoft.com/fwlink/?linkid=823060")
+# downloadfile=$(downloadFile "Microsoft OneDrive" "https://go.microsoft.com/fwlink/?linkid=823060")
+downloadedfile=$(downloadFile "Google Chrome" installomator google-chrome)
 
 # do something with the file we just downloaded
 echo "Downloaded ${downloadedfile}"
