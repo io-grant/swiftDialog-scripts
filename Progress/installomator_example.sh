@@ -21,8 +21,7 @@ else
 fi
 
 # the label to install:
-label="googlechromepkg"
-
+label="figma"
 
 # MARK: Constants
 
@@ -30,9 +29,11 @@ scriptDir=$(dirname ${0:A})
 repoDir=$(dirname $scriptDir)
 
 if [[ $DEBUG -eq 1 ]]; then
-    installomator="$repoDir/utils/Installomator.sh"
+    # installomator="$repoDir/utils/Installomator.sh"
+    installomator="/applications/Installomator.sh"
 else
-    installomator="/usr/local/Installomator/Installomator.sh"
+    # installomator="/usr/local/Installomator/Installomator.sh"
+    installomator="$repoDir/utils/Installomator.sh"
 fi
 
 dialog="/usr/local/bin/dialog"
