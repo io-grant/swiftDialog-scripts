@@ -73,9 +73,11 @@ if [[ ! -e "${destFile}" || "$currentInstalledVersion" != "$appNewVersion" ]]; t
     echo "$name not found or version not latest."
     echo "${destFile}"
     echo "Installing version ${appNewVersion}…"
+
     # Create temporary working directory
     tmpDir="$(mktemp -d || true)"
     echo "Created working directory '$tmpDir'"
+
     # Download the installer package
     echo "Downloading $name package version $appNewVersion from: $downloadURL"
     installationCount=0
@@ -88,10 +90,12 @@ if [[ ! -e "${destFile}" || "$currentInstalledVersion" != "$appNewVersion" ]]; t
             echo "${curlDownload}"
             exitCode=1
         else
-            echo "Download $name succes."
+            echo "Download $name successful."
+
             # Verify the download
             teamID=$(spctl -a -vv -t install "$tmpDir/$name.pkg" 2>&1 | awk '/origin=/ {print $NF }' | tr -d '()' || true)
             echo "Team ID for downloaded package: $teamID"
+            
             # Install the package if Team ID validates
             if [ "$expectedTeamID" = "$teamID" ] || [ "$expectedTeamID" = "" ]; then
                 echo "$name package verified. Installing package '$tmpDir/$name.pkg'."
@@ -102,7 +106,7 @@ if [[ ! -e "${destFile}" || "$currentInstalledVersion" != "$appNewVersion" ]]; t
                     echo "${pkgInstall}"
                     exitCode=2
                 else
-                    echo "Installing $name package succes."
+                    echo "Installing $name package success."
                     exitCode=0
                 fi
             else
